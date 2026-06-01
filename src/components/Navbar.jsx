@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F2EDE4] border-b border-[#E0D8CC]">
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="w-full px-6 h-14 flex items-center justify-between">
         <Link to="/" className="font-serif italic text-xl text-ink tracking-tight">
           Rosy Quilling Arts
         </Link>
@@ -24,8 +24,8 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               className={`text-xs tracking-widest uppercase font-sans transition-colors ${location.pathname === link.to
-                  ? 'text-ink'
-                  : 'text-[#888] hover:text-ink'
+                ? 'text-ink'
+                : 'text-[#888] hover:text-ink'
                 }`}
             >
               {link.label}
