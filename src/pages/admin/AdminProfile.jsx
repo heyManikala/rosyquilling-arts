@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import AdminShell from '../../components/AdminShell'
 
-const empty = { name: '', bio: '', instagram: '', email: '' }
+const empty = {
+    name: '',
+    bio: '',
+    instagram: '',
+    instagram_url: '',
+    email: '',
+    phone: '',
+    location: '',
+}
 
 export default function AdminProfile() {
     const [form, setForm] = useState(empty)
@@ -22,7 +30,10 @@ export default function AdminProfile() {
                     name: data.name || '',
                     bio: data.bio || '',
                     instagram: data.instagram || '',
+                    instagram_url: data.instagram_url || '',
                     email: data.email || '',
+                    phone: data.phone || '',
+                    location: data.location || '',
                 })
                 if (data.avatar_url) setAvatarPreview(data.avatar_url)
             }
@@ -66,6 +77,15 @@ export default function AdminProfile() {
         setSaving(false)
     }
 
+    const fields = [
+        { key: 'name', label: 'Name', placeholder: 'Your name' },
+        { key: 'email', label: 'Contact email', placeholder: 'hello@rosyquilling.arts' },
+        { key: 'phone', label: 'Phone / WhatsApp', placeholder: '+977 98XXXXXXXX' },
+        { key: 'location', label: 'Location', placeholder: 'Kathmandu, Nepal' },
+        { key: 'instagram', label: 'Instagram handle', placeholder: '@rosyquilling.arts' },
+        { key: 'instagram_url', label: 'Instagram URL', placeholder: 'https://www.instagram.com/rosyquilling.arts/' },
+    ]
+
     return (
         <AdminShell>
             <h1 className="font-serif italic text-3xl text-ink mb-8">Profile</h1>
@@ -90,11 +110,7 @@ export default function AdminProfile() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                    {[
-                        { key: 'name', label: 'Name', placeholder: 'Your name' },
-                        { key: 'email', label: 'Contact email', placeholder: 'hello@rosyquilling.arts' },
-                        { key: 'instagram', label: 'Instagram handle', placeholder: '@rosyquilling' },
-                    ].map(field => (
+                    {fields.map(field => (
                         <div key={field.key}>
                             <label className="block text-xs tracking-widest uppercase text-[#888] mb-2">
                                 {field.label}

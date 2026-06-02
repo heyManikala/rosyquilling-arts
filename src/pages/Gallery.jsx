@@ -79,34 +79,49 @@ export default function Gallery() {
                         onClick={() => setSelected(null)}
                     >
                         <div
-                            className="bg-[#F2EDE4] max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                            className="bg-[#F2EDE4] max-w-lg w-full rounded-xl shadow-2xl overflow-hidden"
                             onClick={e => e.stopPropagation()}
                         >
-                            <img
-                                src={selected.image_url}
-                                alt={selected.title}
-                                className="w-full object-cover"
-                            />
-                            <div className="p-6">
-                                <h2 className="font-serif italic text-2xl text-ink">{selected.title}</h2>
-                                <p className="text-xs text-[#888] mt-1 tracking-wide">
-                                    {selected.year}{selected.dimensions ? ` · ${selected.dimensions}` : ''}
+
+                            {/* IMAGE (FIXED - NO CUTTING) */}
+                            <div className="max-h-[55vh] flex items-center justify-center bg-black">
+                                <img
+                                    src={selected.image_url}
+                                    alt={selected.title}
+                                    className="max-h-[55vh] w-auto object-contain"
+                                />
+                            </div>
+
+                            {/* CONTENT */}
+                            <div className="p-5">
+
+                                <h2 className="font-serif italic text-xl text-ink">
+                                    {selected.title}
+                                </h2>
+
+                                <p className="text-xs text-[#888] mt-1">
+                                    {selected.year}
+                                    {selected.dimensions ? ` · ${selected.dimensions}` : ''}
                                 </p>
+
                                 {selected.description && (
-                                    <p className="mt-4 text-[#555] font-sans text-sm leading-relaxed">
+                                    <p className="mt-3 text-[#555] text-sm leading-relaxed line-clamp-4">
                                         {selected.description}
                                     </p>
                                 )}
+
                                 <button
                                     onClick={() => setSelected(null)}
-                                    className="mt-6 text-xs tracking-widest uppercase font-sans text-[#888] hover:text-ink border-b border-[#888] pb-0.5"
+                                    className="mt-4 text-xs uppercase tracking-widest text-[#888] hover:text-ink border-b border-[#888]"
                                 >
                                     Close
                                 </button>
+
                             </div>
                         </div>
                     </div>
                 )}
+
             </main>
         </PageTransition>
     )
