@@ -3,10 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from './hooks/useAuth.jsx'
+import CursorGlow from './components/CursorGlow.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
+      <CursorGlow />
       <App />
     </AuthProvider>
   </StrictMode>,
