@@ -1,11 +1,5 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-
-const navItems = [
-    { to: '/admin', label: 'Dashboard', exact: true },
-    { to: '/admin/artworks', label: 'Artworks' },
-    { to: '/admin/profile', label: 'Profile' },
-]
 
 export default function AdminShell({ children }) {
     const { signOut, user } = useAuth()
@@ -17,44 +11,55 @@ export default function AdminShell({ children }) {
     }
 
     return (
-        <div className="min-h-screen flex flex-col md:flex-row bg-[#F2EDE4]">
-            {/* Sidebar */}
-            <aside className="w-full md:w-56 bg-[#1A1A1A] flex flex-col">
-                <div className="p-6 border-b border-[#333]">
-                    <p className="font-serif italic text-white text-lg">Rosy Quilling</p>
-                    <p className="text-xs text-[#666] mt-1 truncate">{user?.email}</p>
-                </div>
-
-                <nav className="flex-1 p-4 flex flex-col gap-1">
-                    {navItems.map(item => (
+        <div className="min-h-screen bg-[#F2EDE4]">
+            <header className="bg-[#F2EDE4] border-b border-[#E0D8CC] px-6 py-4">
+                <div className="max-w-6xl mx-auto flex items-center justify-between">
+                    <Link to="/admin" className="font-serif italic text-xl text-ink">
+                        Rosy Quilling Arts
+                    </Link>
+                    <nav className="flex items-center gap-6">
                         <NavLink
-                            key={item.to}
-                            to={item.to}
-                            end={item.exact}
+                            to="/admin"
+                            end
                             className={({ isActive }) =>
-                                `px-4 py-2.5 text-xs tracking-widest uppercase font-sans transition-colors ${isActive
-                                    ? 'bg-[#333] text-white'
-                                    : 'text-[#888] hover:text-white'
-                                }`
+                                `text-xs tracking-widest uppercase font-sans transition-colors ${isActive ? 'text-ink' : 'text-[#888] hover:text-ink'}`
                             }
                         >
-                            {item.label}
+                            Dashboard
                         </NavLink>
-                    ))}
-                </nav>
-
-                <div className="p-4 border-t border-[#333]">
-                    <button
-                        onClick={handleSignOut}
-                        className="w-full px-4 py-2.5 text-xs tracking-widest uppercase font-sans text-[#888] hover:text-white transition-colors text-left"
-                    >
-                        Sign out
-                    </button>
+                        <NavLink
+                            to="/admin/artworks"
+                            className={({ isActive }) =>
+                                `text-xs tracking-widest uppercase font-sans transition-colors ${isActive ? 'text-ink' : 'text-[#888] hover:text-ink'}`
+                            }
+                        >
+                            Artworks
+                        </NavLink>
+                        <NavLink
+                            to="/admin/profile"
+                            className={({ isActive }) =>
+                                `text-xs tracking-widest uppercase font-sans transition-colors ${isActive ? 'text-ink' : 'text-[#888] hover:text-ink'}`
+                            }
+                        >
+                            Profile
+                        </NavLink>
+                        <Link
+                            to="/"
+                            target="_blank"
+                            className="text-xs tracking-widest uppercase font-sans text-[#888] hover:text-ink transition-colors"
+                        >
+                            View site ↗
+                        </Link>
+                        <button
+                            onClick={handleSignOut}
+                            className="px-4 py-2 bg-ink text-[#F2EDE4] text-xs tracking-widest uppercase font-sans hover:bg-[#333] transition-colors"
+                        >
+                            Sign out
+                        </button>
+                    </nav>
                 </div>
-            </aside>
-
-            {/* Main content */}
-            <main className="flex-1 p-6 md:p-10 overflow-y-auto">
+            </header>
+            <main className="max-w-6xl mx-auto px-6 py-10">
                 {children}
             </main>
         </div>
