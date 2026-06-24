@@ -8,6 +8,7 @@ export default function Navbar() {
   const links = [
     { to: '/gallery', label: 'Gallery' },
     { to: '/process', label: 'The Process' },
+    { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' },
   ]
 
@@ -30,8 +31,8 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               className={`text-xs tracking-widest uppercase font-sans transition-colors ${location.pathname === link.to
-                  ? 'text-ink'
-                  : 'text-[#888] hover:text-ink'
+                ? 'text-ink'
+                : 'text-[#888] hover:text-ink'
                 }`}
             >
               {link.label}

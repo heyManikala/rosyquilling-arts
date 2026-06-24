@@ -42,6 +42,10 @@ export default function Footer() {
                         The Process
                     </Link>
 
+                    <Link to="/about" className="text-[#888] hover:text-white transition">
+                        About
+                    </Link>
+
                     <Link to="/contact" className="text-[#888] hover:text-white transition">
                         Contact
                     </Link>

@@ -12,6 +12,7 @@ import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminArtworks from './pages/admin/AdminArtworks'
 import AdminProfile from './pages/admin/AdminProfile'
+import About from './pages/About'
 
 function Layout() {
   const location = useLocation()
@@ -37,6 +38,7 @@ function Layout() {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/process" element={<Process />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
               </Routes>
             </div>
             <Footer />
