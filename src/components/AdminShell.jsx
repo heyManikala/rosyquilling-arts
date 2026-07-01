@@ -13,7 +13,7 @@ export default function AdminShell({ children }) {
     return (
         <div className="min-h-screen bg-[#F2EDE4]">
             <header className="bg-[#F2EDE4] border-b border-[#E0D8CC] px-6 py-4">
-                <div className="max-w-6xl mx-auto flex items-center justify-between">
+                <div className="w-full flex items-center justify-between">
                     <Link to="/admin" className="font-serif italic text-xl text-ink">
                         Rosy Quilling Arts
                     </Link>

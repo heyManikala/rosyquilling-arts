@@ -86,17 +86,18 @@ export default function Home() {
               Featured works
             </p>
 
+
             {/* CLEAN GRID WITHOUT CROPPING BUG */}
             <div className="grid grid-cols-12 gap-4">
 
               {/* BIG IMAGE */}
               {artworks[0] && (
-                <div className="col-span-12 md:col-span-8">
+                <div className="col-span-12 md:col-span-8 row-span-2">
                   <Link to="/gallery">
                     <img
                       src={artworks[0].image_url}
                       alt={artworks[0].title}
-                      className="w-full h-auto object-contain bg-[#EAE4DB] hover:scale-[1.02] transition duration-500"
+                      className="w-full h-full object-contain bg-[#EAE4DB] hover:scale-[1.02] transition duration-500"
                     />
                   </Link>
                 </div>
@@ -115,19 +116,23 @@ export default function Home() {
                 </div>
               )}
 
-              {/* QUOTE CARD */}
+              {/* QUOTE CARD BELOW SIDE IMAGE */}
               <div className="col-span-12 md:col-span-4 bg-[#EAE4DB] border border-[#D8D0C4] p-6 flex flex-col justify-center">
-                <p className="font-serif italic text-ink">
+                <p className="font-serif italic text-ink text-lg leading-relaxed">
                   "Every strip is a decision. The tension in the coil holds the soul of the work together."
                 </p>
-                <p className="text-xs tracking-widest uppercase text-[#888] mt-4">
-                  {profile?.name || 'Rosy Quilling Arts'}
+
+                <p className="text-xs tracking-widest uppercase text-[#888] mt-5">
+                  — {profile?.name || 'Rosy Quilling Arts'}
                 </p>
               </div>
 
-              {/* SMALL IMAGES */}
+              {/* BOTTOM TWO IMAGES */}
               {artworks.slice(2, 4).map((art, i) => (
-                <div key={i} className="col-span-12 md:col-span-4">
+                <div
+                  key={i}
+                  className="col-span-12 md:col-span-6"
+                >
                   <Link to="/gallery">
                     <img
                       src={art.image_url}
@@ -140,6 +145,7 @@ export default function Home() {
 
             </div>
 
+
             <div className="text-right mt-6">
               <Link
                 to="/gallery"
@@ -150,6 +156,56 @@ export default function Home() {
             </div>
           </section>
         )}
+        {/* ABOUT */}
+        <section className="border-t border-[#E0D8CC] py-16 sm:py-20 px-5 sm:px-6 md:px-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+            {/* Image */}
+            <div>
+              {profile?.avatar_url ? (
+                <img
+                  src={profile.avatar_url}
+                  alt={profile?.name}
+                  className="w-full max-w-md mx-auto rounded-lg object-cover shadow-lg"
+                />
+              ) : (
+                <div className="w-full h-[420px] bg-[#EAE4DB] flex items-center justify-center rounded-lg">
+                  <span className="text-[#888] text-sm">
+                    Add profile image from Admin
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Text */}
+            <div>
+              <p className="text-xs tracking-widest uppercase text-[#888] mb-3">
+                About the Artist
+              </p>
+
+              <h2 className="font-serif italic text-3xl sm:text-5xl text-ink leading-tight mb-6">
+                Hi, I'm {profile?.name || 'Rosy'}.
+              </h2>
+
+              <p className="text-[#777] leading-8 mb-5">
+                {profile?.bio ||
+                  'I create handcrafted quilling artwork using carefully rolled paper strips. Every design is made patiently by hand, transforming simple paper into detailed floral compositions, portraits, landscapes, and personalized keepsakes.'}
+              </p>
+
+              <p className="text-[#777] leading-8 mb-8">
+                Every piece is unique and created with attention to detail, making it perfect for gifts, home décor, and memorable occasions.
+              </p>
+
+              <Link
+                to="/about"
+                className="inline-block border border-ink px-6 py-3 text-xs uppercase tracking-widest hover:bg-ink hover:text-[#F2EDE4] transition"
+              >
+                Learn More
+              </Link>
+            </div>
+
+          </div>
+        </section>
 
         {/* PROCESS */}
         <section className="border-t border-[#E0D8CC] py-16 sm:py-20 px-5 sm:px-6 md:px-8">
@@ -182,6 +238,15 @@ export default function Home() {
         </section>
 
       </main>
+      {/* STUDIO ACCESS (Hidden) */}
+      <div className="pb-8 text-center">
+        <Link
+          to="/admin/login"
+          className="text-[10px] tracking-[0.35em] uppercase text-[#CFC6B8] hover:text-[#888] transition duration-300"
+        >
+          Studio Access
+        </Link>
+      </div>
     </PageTransition>
   )
 }
