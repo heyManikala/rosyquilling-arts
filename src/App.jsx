@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery'
 import Process from './pages/Process'
 import Contact from './pages/Contact'
 import AdminLogin from './pages/admin/AdminLogin'
+import AdminResetPassword from './pages/admin/AdminResetPassword'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminArtworks from './pages/admin/AdminArtworks'
 import AdminProfile from './pages/admin/AdminProfile'
@@ -26,6 +27,7 @@ function Layout() {
         {isAdmin ? (
           <Routes>
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/reset-password" element={<AdminResetPassword />} />
             <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/artworks" element={<ProtectedRoute><AdminArtworks /></ProtectedRoute>} />
             <Route path="/admin/profile" element={<ProtectedRoute><AdminProfile /></ProtectedRoute>} />

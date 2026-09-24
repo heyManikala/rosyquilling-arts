@@ -119,7 +119,7 @@ export default function Process() {
                             rel="noopener noreferrer"
                             className="inline-block px-8 py-3 bg-[#25D366] text-white rounded-full hover:scale-105 transition"
                         >
-                            Chat on WhatsApp
+                            Get in Touch
                         </a>
 
                     </div>
