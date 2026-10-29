@@ -99,33 +99,6 @@ export default function Process() {
 
                 </section>
 
-                {/* Commission Section */}
-                <section className="bg-[#1A1A1A] py-20 px-6">
-
-                    <div className="max-w-xl mx-auto text-center">
-
-                        <h2 className="font-serif italic text-4xl text-white mb-4">
-                            Interested in a commission?
-                        </h2>
-
-                        <p className="text-[#888] font-sans text-sm leading-relaxed mb-8">
-                            Original works and bespoke commissions are available.
-                            Get in touch to discuss your piece.
-                        </p>
-
-                        <a
-                            href="https://wa.me/97798XXXXXXXX?text=Hi! I am interested in your quilling artworks."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block px-8 py-3 bg-[#25D366] text-white rounded-full hover:scale-105 transition"
-                        >
-                            Get in Touch
-                        </a>
-
-                    </div>
-
-                </section>
-
             </main>
         </PageTransition>
     )
